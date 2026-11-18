@@ -1,0 +1,65 @@
+{
+ "diperbarui": "2026-11-18T18:03:57+00:00",
+ "status": {
+  "rifky": {
+   "status": "kerja",
+   "menit": 0,
+   "file": "laptop nyala"
+  },
+  "claude": {
+   "status": "istirahat",
+   "menit": 100,
+   "file": "02 Media Sosial/Santri Sekamar/HANDOFF.md"
+  },
+  "gemi": {
+   "status": "istirahat",
+   "menit": 1809,
+   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
+  },
+  "seno": {
+   "status": "kerja",
+   "menit": 15,
+   "file": "01 Website/rifkyaritama-seo/riset-ide-konten.md"
+  },
+  "laras": {
+   "status": "kerja",
+   "menit": 15,
+   "file": "01 Website/rifkyaritama-seo/drafts/personal-branding-santri.json"
+  },
+  "bima": {
+   "status": "kerja",
+   "menit": 15,
+   "file": "01 Website/rifkyaritama-seo/log-automasi.md"
+  },
+  "dimas": {
+   "status": "istirahat",
+   "menit": 3682,
+   "file": "01 Website/santrigo-app/server/seoRender.ts"
+  },
+  "nadia": {
+   "status": "istirahat",
+   "menit": 901,
+   "file": "01 Website/santrigo-seo/thumbnails/berita-alkhoirot-olimpiade-sains/thumbnail.jpg"
+  },
+  "putri": {
+   "status": "istirahat",
+   "menit": 15105,
+   "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
+  },
+  "fajar": {
+   "status": "kerja",
+   "menit": 10,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP01-habis-mondok-mau-jadi-apa/motion/EP01-habis-mondok-mau-jadi-apa_engine.mp4"
+  },
+  "bayu": {
+   "status": "istirahat",
+   "menit": 73,
+   "file": "02 Media Sosial/Santri Sekamar/test_vo_fikri.wav"
+  },
+  "arga": {
+   "status": "istirahat",
+   "menit": 5691,
+   "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
+  }
+ }
+}

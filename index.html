@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kantor AI Rifky</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Arah: kantor kecil yang hangat, dinding krem + lantai kayu, label nama gelap ala game simulasi.
+   Dial: ENERGY 2 / RHYTHM 1 / MOTION 2. Gerak = informasi: jalan saat status berubah, mondar-mandir saat istirahat. */
+:root{
+  --dinding:#efe7d8;
+  --lantai:#d6ae82;
+  --lantai-gelap:#c79c6f;
+  --tinta:#2a2622;
+  --kartu:#fffaf2;
+  --kerja-terang:#7fe0a6;
+  --rehat-terang:#ffc26b;
+  --garis:#cdbfa8;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tinta);background:var(--dinding);line-height:1.45}
+a,button,summary,[role="button"]{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:3px solid #1f5fbf;outline-offset:3px;border-radius:6px}
+
+header{max-width:1100px;margin:0 auto;padding:20px 16px 12px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+h1{font-family:"Pixelify Sans",system-ui,sans-serif;font-weight:700;font-size:clamp(1.6rem,4vw,2.3rem);margin:0;line-height:1.1}
+.sub{margin:4px 0 0;font-size:.95rem;color:#5a5048}
+.ringkas{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.95rem}
+.jam{font-family:"Pixelify Sans",system-ui,sans-serif;font-size:1.3rem}
+.hitung b{font-variant-numeric:tabular-nums}
+.contoh{font-size:.8rem;background:#fff3d6;border:1px solid #e3c98f;padding:2px 8px;border-radius:4px;color:#6b4a07}
+
+.alat{max-width:1100px;margin:0 auto;padding:0 16px 12px;display:flex;flex-wrap:wrap;gap:8px}
+.tombol{font:inherit;font-size:.9rem;min-height:44px;padding:8px 14px;background:var(--kartu);color:var(--tinta);border:2px solid var(--tinta);border-radius:6px;box-shadow:0 3px 0 var(--tinta)}
+.tombol:hover{background:#fff}
+.tombol:active{transform:translateY(3px);box-shadow:0 0 0 var(--tinta)}
+
+main{max-width:1100px;margin:0 auto;padding:0 16px 24px;display:grid;gap:12px}
+.info{margin:0;padding:12px;border-radius:8px;border:2px solid var(--tinta);background:var(--kartu)}
+.info.galat{border-color:#9b2c2c;background:#fdeceb;color:#7a1f1f}
+[hidden]{display:none!important}
+
+/* satu lantai: meja di atas, pantry di bawah */
+.lantai{
+  position:relative;overflow:hidden;border:3px solid var(--tinta);border-radius:10px;
+  background:repeating-linear-gradient(90deg,var(--lantai) 0 78px,var(--lantai-gelap) 78px 80px); /* papan kayu: motif identitas */
+}
+.zona-pantry{position:absolute;left:0;right:0;bottom:0;background:#e4d6bf;border-top:3px dashed #a8744a}
+.zona-pantry .judul{position:absolute;left:12px;top:8px;font-family:"Pixelify Sans",system-ui,sans-serif;font-size:1rem}
+.alat-pantry{position:absolute;left:10px;bottom:10px;width:120px;height:auto}
+
+.meja{position:absolute;width:150px;transform:translateX(-50%);pointer-events:none}
+.meja svg{display:block;width:100%;height:auto}
+.papan{display:block;margin:2px auto 0;width:max-content;max-width:100%;font-size:.72rem;line-height:1.2;text-align:center;background:var(--kartu);border:1.5px solid var(--tinta);border-radius:4px;padding:2px 6px}
+.meja:not(.nyala) .layar-baris{display:none}
+.meja.nyala .layar-baris{animation:kedip 1.6s steps(2) infinite}
+
+.org{
+  position:absolute;width:76px;padding:0;border:0;background:transparent;font:inherit;color:inherit;
+  transform:translate(-50%,-100%);
+  transition-property:left,top;transition-timing-function:linear;transition-duration:0s;
+  display:flex;flex-direction:column;align-items:center;
+}
+.org:hover .badan{filter:brightness(1.08)}
+.label{background:var(--tinta);color:#fff;border-radius:5px;padding:2px 7px;font-size:.72rem;line-height:1.25;white-space:nowrap;margin-bottom:2px}
+.label .nama{font-family:"Pixelify Sans",system-ui,sans-serif;font-size:.85rem}
+.label .st{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:5px;vertical-align:middle}
+.label .st.kerja{background:var(--kerja-terang)}
+.label .st.istirahat{background:var(--rehat-terang)}
+.badan{width:40px;height:64px;display:block}
+.hadap-kiri .badan{transform:scaleX(-1)}
+
+/* gerak */
+.kaki{transform-box:fill-box;transform-origin:top center}
+.jalan .kaki-a{animation:langkah .36s ease-in-out infinite alternate}
+.jalan .kaki-b{animation:langkah .36s ease-in-out infinite alternate-reverse}
+.jalan .badan{animation:goyang .36s ease-in-out infinite alternate}
+@keyframes langkah{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+@keyframes goyang{from{translate:0 0}to{translate:0 -2px}}
+.duduk-kerja .lengan{animation:ketik .5s steps(2) infinite;transform-box:fill-box}
+@keyframes ketik{50%{transform:translateY(-1.5px)}}
+@keyframes kedip{50%{opacity:.35}}
+.kopi{display:none}
+.bawa-kopi .kopi{display:inline}
+.uap{animation:uap 2.4s ease-in-out infinite;transform-box:fill-box}
+@keyframes uap{0%{opacity:0;transform:translateY(2px)}50%{opacity:.8}100%{opacity:0;transform:translateY(-6px)}}
+body.jeda *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.org{transition:none!important}}
+
+dialog{border:3px solid var(--tinta);border-radius:10px;padding:0;max-width:min(420px,92vw);width:100%;background:var(--kartu);color:var(--tinta)}
+dialog::backdrop{background:rgba(42,38,34,.45)}
+.dlg{padding:18px}
+.dlg h2{font-family:"Pixelify Sans",system-ui,sans-serif;font-size:1.4rem;margin:0}
+.dlg dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:14px 0}
+.dlg dt{font-weight:600;color:#5a5048}
+.dlg dd{margin:0;overflow-wrap:anywhere}
+.dlg code{font-size:.85rem;background:#efe7d8;padding:1px 5px;border-radius:4px}
+
+footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color:#5a5048}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Kantor AI Rifky</h1>
+    <p class="sub">Siapa lagi kerja, siapa lagi ngopi.</p>
+  </div>
+  <div class="ringkas" aria-live="polite">
+    <span class="jam" id="jam">--:--</span>
+    <span class="hitung"><b id="n-kerja">0</b> kerja, <b id="n-rehat">0</b> istirahat</span>
+    <span class="contoh" id="label-sumber">Data contoh</span>
+  </div>
+</header>
+
+<div class="alat">
+  <button class="tombol" id="btn-acak" type="button">Acak status (simulasi)</button>
+  <button class="tombol" id="btn-jeda" type="button" aria-pressed="false">Jeda gerak</button>
+</div>
+
+<main>
+  <p class="info" id="muat" hidden>Memuat status kantor...</p>
+  <div class="info galat" id="galat" hidden>
+    <p style="margin:0 0 8px">Status gagal dimuat: <span id="galat-pesan"></span></p>
+    <button class="tombol" id="btn-ulang" type="button">Coba muat lagi</button>
+  </div>
+
+  <section class="lantai" id="lantai" aria-label="Lantai kantor">
+    <div class="zona-pantry" id="pantry">
+      <span class="judul">Pantry</span>
+      <svg class="alat-pantry" viewBox="0 0 120 90" aria-hidden="true">
+        <rect x="4" y="52" width="112" height="34" fill="#8a5a36" stroke="#2a2622" stroke-width="2"/>
+        <rect x="4" y="48" width="112" height="6" fill="#a8744a" stroke="#2a2622" stroke-width="2"/>
+        <rect x="14" y="10" width="22" height="16" rx="3" fill="#bfe3f2" stroke="#2a2622" stroke-width="2"/>
+        <rect x="12" y="26" width="26" height="22" fill="#f4f4f4" stroke="#2a2622" stroke-width="2"/>
+        <rect x="22" y="34" width="6" height="4" fill="#2a2622"/>
+        <rect x="58" y="24" width="30" height="24" rx="3" fill="#3b3b3b" stroke="#2a2622" stroke-width="2"/>
+        <rect x="68" y="38" width="10" height="10" fill="#fff" stroke="#2a2622" stroke-width="1.5"/>
+        <path class="uap" d="M71 34 q-2 -4 0 -7 M75 34 q2 -4 0 -7" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <rect x="96" y="38" width="10" height="10" fill="#e6d3b3" stroke="#2a2622" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Klik karakter buat lihat tugasnya. Status dibaca dari kapan file di folder Kantor AI terakhir berubah: di bawah 60 menit dihitung kerja.
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-nama">
+  <div class="dlg">
+    <h2 id="dlg-nama"></h2>
+    <dl>
+      <dt>Jabatan</dt><dd id="dlg-jab"></dd>
+      <dt>Tugas</dt><dd id="dlg-tugas"></dd>
+      <dt>Status</dt><dd id="dlg-st"></dd>
+      <dt>Terakhir aktif</dt><dd id="dlg-akhir"></dd>
+      <dt>Dibaca dari</dt><dd id="dlg-sumber"></dd>
+    </dl>
+    <form method="dialog"><button class="tombol" type="submit">Tutup</button></form>
+  </div>
+</dialog>
+
+<script>
+const TIM = [
+  {id:"rifky", nama:"Bos Rifky", jabatan:"CEO / Pemilik", tugas:"Kasih arahan dan approve hasil kerja", sumber:"-", baju:"#3a3a3a", rambut:"#1c1a18", topi:true, bos:true},
+  {id:"claude", nama:"Claude", jabatan:"COO", tugas:"Bagi tugas ke tim, bikin handoff", sumber:".claude/, HANDOFF.md", baju:"#c4643c", rambut:"#5b3a24"},
+  {id:"gemi", nama:"Gemi", jabatan:"Wakil COO", tugas:"Eksekusi tugas dari Claude", sumber:"GEMINI.md", baju:"#3e6bb0", rambut:"#2a2622", via:"Antigravity (Gemini)"},
+  {id:"seno", nama:"Seno", jabatan:"SEO Specialist", tugas:"Riset keyword, susun antrean, cek indeks", sumber:"antrean-artikel.md, log-indeks.md", baju:"#4f7d5c", rambut:"#2a2622"},
+  {id:"laras", nama:"Laras", jabatan:"SEO Writer", tugas:"Nulis draft artikel blog", sumber:"drafts/", baju:"#9a4f6e", kerudung:true},
+  {id:"bima", nama:"Bima", jabatan:"Publisher", tugas:"Upload draft ke WordPress dan jadwalkan terbit", sumber:"log-automasi.md", baju:"#6a6f7a", rambut:"#2a2622"},
+  {id:"dimas", nama:"Dimas", jabatan:"Web Developer", tugas:"Ngembangin santrigo-app", sumber:"santrigo-app/src, server", baju:"#2f4f6f", rambut:"#2a2622"},
+  {id:"nadia", nama:"Nadia", jabatan:"Desainer Grafis", tugas:"Thumbnail blog dan visual IG", sumber:"thumbnails/, Visual IG Santrigo/hasil", baju:"#c9893a", kerudung:true},
+  {id:"putri", nama:"Putri", jabatan:"Social Media Officer", tugas:"IG Story Santrigo, posting Threads", sumber:"IG Story/FIX", baju:"#5c8a8a", kerudung:true},
+  {id:"fajar", nama:"Fajar", jabatan:"Scriptwriter", tugas:"Naskah episode Santri Sekamar", sumber:"Santri Sekamar/episodes", baju:"#7a5a3a", rambut:"#2a2622"},
+  {id:"bayu", nama:"Bayu", jabatan:"Voice Over", tugas:"Generate VO tiap karakter", sumber:"file .wav di Santri Sekamar", baju:"#5a4f8a", rambut:"#2a2622", via:"Gemini TTS"},
+  {id:"arga", nama:"Arga", jabatan:"Business Strategist", tugas:"Strategi bisnis dan target 100 user berbayar", sumber:"03 Bisnis & Strategi/", baju:"#8a3a3a", rambut:"#2a2622"}
+];
+
+// Data contoh. Versi live diisi dari status.json hasil script di laptop.
+let STATUS = {
+  rifky:{status:"kerja", menit:2}, claude:{status:"kerja", menit:1}, gemi:{status:"kerja", menit:9},
+  seno:{status:"istirahat", menit:140}, laras:{status:"kerja", menit:12}, bima:{status:"kerja", menit:30},
+  dimas:{status:"istirahat", menit:900}, nadia:{status:"kerja", menit:25}, putri:{status:"istirahat", menit:300},
+  fajar:{status:"kerja", menit:40}, bayu:{status:"istirahat", menit:75}, arga:{status:"istirahat", menit:2000}
+};
+
+const KULIT = "#e8b98e";
+const KECEPATAN = 110; // piksel per detik
+const SLOT_H = 150;
+const lantai = document.getElementById("lantai");
+const pantry = document.getElementById("pantry");
+const gerakMati = matchMedia("(prefers-reduced-motion: reduce)");
+let jeda = false, layout = null;
+const EL = {}, POS = {}, MEJA = {};
+
+function spriteOrang(p){
+  const kepala = p.kerudung
+    ? `<path d="M10 14 a10 10 0 0 1 20 0 v8 h-20z" fill="${p.baju}" stroke="#2a2622" stroke-width="1.5"/><circle cx="20" cy="13" r="6.5" fill="${KULIT}"/>`
+    : `<circle cx="20" cy="12" r="9" fill="${KULIT}" stroke="#2a2622" stroke-width="1.5"/><path d="M11 11 a9 9 0 0 1 18 0 v-2 h-18z" fill="${p.rambut}"/>`;
+  const topi = p.topi ? `<rect x="10" y="2" width="20" height="6" rx="2" fill="#f1efe9" stroke="#2a2622" stroke-width="1.5"/><rect x="20" y="6" width="13" height="3" fill="#f1efe9" stroke="#2a2622" stroke-width="1.2"/>` : "";
+  return `<svg class="badan" viewBox="0 0 40 64" aria-hidden="true">
+    <rect class="kaki kaki-a" x="13" y="42" width="6" height="20" fill="#3b3b3b" stroke="#2a2622" stroke-width="1.2"/>
+    <rect class="kaki kaki-b" x="21" y="42" width="6" height="20" fill="#3b3b3b" stroke="#2a2622" stroke-width="1.2"/>
+    <rect x="9" y="22" width="22" height="22" rx="5" fill="${p.baju}" stroke="#2a2622" stroke-width="1.5"/>
+    <g class="lengan"><rect x="5" y="26" width="5" height="12" rx="2" fill="${p.baju}" stroke="#2a2622" stroke-width="1.2"/>
+    <rect x="30" y="26" width="5" height="12" rx="2" fill="${p.baju}" stroke="#2a2622" stroke-width="1.2"/></g>
+    ${kepala}${topi}
+    <rect x="16" y="12" width="2" height="2" fill="#2a2622"/><rect x="22" y="12" width="2" height="2" fill="#2a2622"/>
+    <g class="kopi"><rect x="32" y="33" width="7" height="8" fill="#fff" stroke="#2a2622" stroke-width="1.2"/>
+    <path class="uap" d="M35 30 q-2 -3 0 -5" stroke="#8a8078" stroke-width="1.2" fill="none"/></g>
+  </svg>`;
+}
+
+function svgMeja(p){
+  const layar = p.bos
+    ? `<rect x="22" y="8" width="44" height="30" rx="2" fill="#26313f" stroke="#2a2622" stroke-width="2"/><rect x="84" y="8" width="44" height="30" rx="2" fill="#26313f" stroke="#2a2622" stroke-width="2"/>
+       <g class="layar-baris"><rect x="28" y="16" width="30" height="3" fill="#7fe0a6"/><rect x="90" y="16" width="26" height="3" fill="#7fe0a6"/><rect x="28" y="24" width="20" height="3" fill="#bcd4ff"/><rect x="90" y="24" width="32" height="3" fill="#bcd4ff"/></g>`
+    : `<rect x="92" y="10" width="40" height="28" rx="2" fill="#26313f" stroke="#2a2622" stroke-width="2"/>
+       <g class="layar-baris"><rect x="97" y="16" width="26" height="3" fill="#7fe0a6"/><rect x="97" y="23" width="18" height="3" fill="#bcd4ff"/><rect x="97" y="30" width="22" height="3" fill="#bcd4ff"/></g>
+       <rect x="30" y="32" width="22" height="7" fill="#f4f4f4" stroke="#2a2622" stroke-width="1.2"/>`;
+  return `<svg viewBox="0 0 150 72" aria-hidden="true">${layar}
+    <rect x="6" y="38" width="138" height="9" fill="#a8744a" stroke="#2a2622" stroke-width="2"/>
+    <rect x="6" y="47" width="138" height="14" fill="#8a5a36" stroke="#2a2622" stroke-width="2"/>
+    <rect x="12" y="61" width="7" height="10" fill="#8a5a36" stroke="#2a2622" stroke-width="1.5"/>
+    <rect x="131" y="61" width="7" height="10" fill="#8a5a36" stroke="#2a2622" stroke-width="1.5"/></svg>`;
+}
+
+function hitungLayout(){
+  const W = lantai.clientWidth;
+  const kol = W >= 900 ? 6 : W >= 640 ? 4 : W >= 460 ? 3 : 2;
+  const baris = Math.ceil(TIM.length / kol);
+  const atasPantry = 16 + baris * SLOT_H;
+  const sempit = W < 640;
+  const pantryH = sempit ? 330 : 230;
+  lantai.style.height = (atasPantry + pantryH) + "px";
+  pantry.style.height = pantryH + "px";
+  const kursi = {};
+  TIM.forEach((p, i) => {
+    const r = Math.floor(i / kol), c = i % kol;
+    const x = (c + .5) * (W / kol);
+    const y = 16 + r * SLOT_H;           // atas slot
+    kursi[p.id] = {x, y: y + 128, mejaTop: y + 66, row: r};
+  });
+  return {W, atasPantry, kursi, sempit, pantryH};
+}
+
+function titikAcak(){
+  const {W, atasPantry, sempit, pantryH} = layout;
+  if (sempit){ // HP: mondar-mandir di atas meja pantry, pakai lebar penuh
+    return {x: 40 + Math.random() * (W - 80), y: atasPantry + 100 + Math.random() * (pantryH - 210)};
+  }
+  return {x: 150 + Math.random() * (W - 190), y: atasPantry + 110 + Math.random() * (pantryH - 125)};
+  return {x, y};
+}
+
+// pilih titik yang paling jauh dari teman lain, biar nggak numpuk
+function titikPantry(id){
+  let terbaik = null, skor = -1;
+  for (let i = 0; i < 10; i++){
+    const t = titikAcak();
+    let dekat = Infinity;
+    TIM.forEach(p => {
+      if (p.id === id || EL[p.id] && EL[p.id]._duduk) return;
+      const q = POS[p.id]; if (!q) return;
+      dekat = Math.min(dekat, Math.hypot((q.x - t.x) * .8, (q.y - t.y) * 1.6));
+    });
+    if (dekat > skor){ skor = dekat; terbaik = t; }
+  }
+  return terbaik;
+}
+
+function zIndex(id, duduk){
+  if (duduk) return 100 + layout.kursi[id].row * 10;   // di belakang meja
+  return 1000 + Math.round(POS[id].y);                 // berdiri: urut kedalaman
+}
+
+function taruh(id, x, y, durasi){
+  const el = EL[id];
+  el.style.transitionDuration = durasi + "s";
+  if (durasi > 0) el.classList.toggle("hadap-kiri", x < POS[id].x);
+  POS[id] = {x, y};
+  el.style.left = x + "px";
+  el.style.top = y + "px";
+}
+
+function jalanKe(id, tujuan, duduk){
+  const el = EL[id];
+  clearTimeout(el._tiba);
+  const dari = POS[id] || tujuan;
+  const jarak = Math.hypot(tujuan.x - dari.x, tujuan.y - dari.y);
+  const durasi = (gerakMati.matches || !POS[id]) ? 0 : jarak / KECEPATAN;
+  el.classList.remove("duduk-kerja");
+  el.classList.toggle("jalan", durasi > 0);
+  el.style.zIndex = durasi > 0 ? 5000 : 0;
+  taruh(id, tujuan.x, tujuan.y, durasi);
+  const tiba = () => {
+    el.classList.remove("jalan");
+    el.style.zIndex = zIndex(id, duduk);
+    if (duduk){ el.classList.add("duduk-kerja"); el.classList.remove("hadap-kiri"); }
+    MEJA[id].classList.toggle("nyala", duduk);
+  };
+  if (durasi > 0){ MEJA[id].classList.remove("nyala"); el._tiba = setTimeout(tiba, durasi * 1000); }
+  else tiba();
+}
+
+function terapkanStatus(){
+  let nK = 0, nR = 0;
+  TIM.forEach(p => {
+    const st = STATUS[p.id] || {status:"istirahat", menit:0};
+    const kerja = st.status === "kerja";
+    kerja ? nK++ : nR++;
+    const el = EL[p.id];
+    el.querySelector(".st").className = "st " + st.status;
+    el.classList.toggle("bawa-kopi", !kerja);
+    el.setAttribute("aria-label", `${p.nama}, ${p.jabatan}, ${kerja ? "kerja" : "istirahat"}. Lihat detail`);
+    if (kerja){
+      const k = layout.kursi[p.id];
+      if (!el._duduk) jalanKe(p.id, {x:k.x, y:k.y}, true);
+    } else if (el._duduk !== false){
+      jalanKe(p.id, titikPantry(p.id), false);
+    }
+    el._duduk = kerja;
+  });
+  document.getElementById("n-kerja").textContent = nK;
+  document.getElementById("n-rehat").textContent = nR;
+}
+
+function bangun(){
+  layout = hitungLayout();
+  TIM.forEach(p => {
+    const m = document.createElement("div");
+    m.className = "meja";
+    m.innerHTML = svgMeja(p) + `<span class="papan">${p.jabatan}</span>`;
+    lantai.appendChild(m);
+    MEJA[p.id] = m;
+
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "org";
+    b.innerHTML = `<span class="label"><span class="nama">${p.nama}</span><span class="st"></span></span>${spriteOrang(p)}`;
+    b.addEventListener("click", () => buka(p));
+    lantai.appendChild(b);
+    EL[p.id] = b;
+  });
+  posisiMeja();
+  terapkanStatus();
+}
+
+function posisiMeja(){
+  TIM.forEach(p => {
+    const k = layout.kursi[p.id], m = MEJA[p.id];
+    m.style.left = k.x + "px";
+    m.style.top = k.mejaTop + "px";
+    m.style.zIndex = 105 + k.row * 10;
+  });
+}
+
+// istirahat = mondar-mandir pelan di pantry
+setInterval(() => {
+  if (jeda || gerakMati.matches || document.hidden) return;
+  TIM.forEach(p => {
+    const el = EL[p.id];
+    if (el._duduk || el.classList.contains("jalan")) return;
+    if (Math.random() < .35) jalanKe(p.id, titikPantry(p.id), false);
+  });
+}, 2500);
+
+let tundaResize;
+addEventListener("resize", () => {
+  clearTimeout(tundaResize);
+  tundaResize = setTimeout(() => {
+    layout = hitungLayout(); posisiMeja();
+    TIM.forEach(p => {
+      const el = EL[p.id];
+      const t = el._duduk ? layout.kursi[p.id] : titikPantry(p.id);
+      delete POS[p.id];
+      jalanKe(p.id, {x:t.x, y:t.y}, el._duduk);
+    });
+  }, 150);
+});
+
+function teksWaktu(m){
+  if (m < 1) return "barusan";
+  if (m < 60) return `${m} menit lalu`;
+  if (m < 1440) return `${Math.floor(m/60)} jam lalu`;
+  return `${Math.floor(m/1440)} hari lalu`;
+}
+
+function buka(p){
+  const st = STATUS[p.id] || {status:"istirahat", menit:0};
+  document.getElementById("dlg-nama").textContent = p.nama;
+  document.getElementById("dlg-jab").textContent = p.jabatan + (p.via ? ` (via ${p.via})` : "");
+  document.getElementById("dlg-tugas").textContent = p.tugas;
+  document.getElementById("dlg-st").textContent = st.status === "kerja" ? "Kerja" : "Istirahat";
+  document.getElementById("dlg-akhir").textContent = p.bos ? "-" : teksWaktu(st.menit);
+  const s = document.getElementById("dlg-sumber");
+  s.innerHTML = "";
+  const c = document.createElement("code"); c.textContent = st.file || p.sumber; s.appendChild(c);
+  document.getElementById("dlg").showModal();
+}
+
+function jam(){
+  document.getElementById("jam").textContent = new Intl.DateTimeFormat("id-ID",
+    {hour:"2-digit", minute:"2-digit", timeZone:"Asia/Jakarta"}).format(new Date()) + " WIB";
+}
+
+document.getElementById("btn-acak").addEventListener("click", () => {
+  TIM.forEach(p => {
+    if (p.bos) return;
+    const kerja = Math.random() < .55;
+    STATUS[p.id] = {status: kerja ? "kerja" : "istirahat", menit: kerja ? Math.floor(Math.random()*59) : 60 + Math.floor(Math.random()*1500)};
+  });
+  terapkanStatus();
+});
+
+document.getElementById("btn-jeda").addEventListener("click", e => {
+  jeda = document.body.classList.toggle("jeda");
+  e.currentTarget.setAttribute("aria-pressed", String(jeda));
+  e.currentTarget.textContent = jeda ? "Lanjutkan gerak" : "Jeda gerak";
+});
+
+// Live: baca status.json di folder yang sama (GitHub Pages). ?data=URL buat sumber lain.
+// Gagal dimuat di luar GitHub = pakai data contoh.
+const BATAS_OFFLINE = 30; // menit tanpa update = laptop dianggap mati
+async function muatStatus(manual){
+  const param = new URLSearchParams(location.search).get("data");
+  const url = param || "status.json";
+  const muat = document.getElementById("muat"), galat = document.getElementById("galat");
+  if (manual) muat.hidden = false;
+  try{
+    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "t=" + Date.now(), {cache:"no-store"});
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const data = await r.json();
+    if (!data.status) throw new Error("format status.json nggak dikenal");
+    STATUS = data.status;
+    galat.hidden = true;
+    const label = document.getElementById("label-sumber");
+    const umur = data.diperbarui ? (Date.now() - new Date(data.diperbarui)) / 60000 : 0;
+    const jamUpdate = data.diperbarui ? new Intl.DateTimeFormat("id-ID",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"}).format(new Date(data.diperbarui)) : "?";
+    if (umur > BATAS_OFFLINE){
+      // laptop mati: semua pulang ke pantry
+      Object.keys(STATUS).forEach(k => STATUS[k] = {...STATUS[k], status:"istirahat"});
+      label.textContent = `Kantor tutup, update terakhir ${jamUpdate}`;
+    } else {
+      label.textContent = `Live, update ${jamUpdate}`;
+    }
+    terapkanStatus();
+  }catch(err){
+    if (param || location.hostname.endsWith("github.io")){
+      document.getElementById("galat-pesan").textContent = err.message;
+      galat.hidden = false;
+    }
+  }finally{ muat.hidden = true; }
+}
+document.getElementById("btn-ulang").addEventListener("click", () => muatStatus(true));
+
+jam(); setInterval(jam, 30000);
+bangun();
+muatStatus();
+setInterval(() => { if (!document.hidden) muatStatus(); }, 5 * 60000);
+</script>
+</body>
+</html>
