@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-21T11:22:13+00:00",
+ "diperbarui": "2026-11-21T11:31:49+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 2,
+   "menit": 0,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 5728,
+   "menit": 5737,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
-   "status": "kerja",
-   "menit": 59,
+   "status": "istirahat",
+   "menit": 69,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 583,
+   "menit": 592,
    "file": "01 Website/rifkyaritama-seo/drafts/jasa-content-writer-thumbnail.kredit.json"
   },
   "bima": {
-   "status": "kerja",
-   "menit": 59,
+   "status": "istirahat",
+   "menit": 69,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "dimas": {
    "status": "kerja",
-   "menit": 44,
+   "menit": 53,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 637,
+   "menit": 647,
    "file": "01 Website/santrigo-seo/thumbnails/berita-assalaam-rusia/thumbnail.jpg"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 19024,
+   "menit": 19033,
    "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
   },
   "fajar": {
    "status": "kerja",
-   "menit": 14,
+   "menit": 1,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/.cache.json"
   },
   "bayu": {
    "status": "kerja",
-   "menit": 18,
+   "menit": 27,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L13.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 9609,
+   "menit": 9619,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
