@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-21T12:02:04+00:00",
+ "diperbarui": "2026-11-21T12:17:09+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 5,
+   "menit": 3,
    "file": "STATUS.md"
   },
   "gemi": {
-   "status": "istirahat",
-   "menit": 5768,
+   "status": "kerja",
+   "menit": 7,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 99,
+   "menit": 114,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 623,
+   "menit": 638,
    "file": "01 Website/rifkyaritama-seo/drafts/jasa-content-writer-thumbnail.kredit.json"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 99,
+   "menit": 114,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 84,
+   "menit": 99,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
-   "status": "istirahat",
-   "menit": 677,
-   "file": "01 Website/santrigo-seo/thumbnails/berita-assalaam-rusia/thumbnail.jpg"
+   "status": "kerja",
+   "menit": 10,
+   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/hasil/cv-pengalaman-pondok/cv-pengalaman-pondok.pptx"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 19064,
+   "menit": 19079,
    "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
   },
   "fajar": {
    "status": "kerja",
-   "menit": 3,
-   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/motion/EP02-ucup-koperasi_engine.mp4"
+   "menit": 14,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/.cache.json"
   },
   "bayu": {
    "status": "kerja",
-   "menit": 8,
+   "menit": 23,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 9649,
+   "menit": 9664,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
