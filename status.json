@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-21T15:59:38+00:00",
+ "diperbarui": "2026-11-21T16:14:43+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 8,
+   "menit": 23,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 219,
+   "menit": 234,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 337,
+   "menit": 352,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 860,
+   "menit": 875,
    "file": "01 Website/rifkyaritama-seo/drafts/jasa-content-writer-thumbnail.kredit.json"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 337,
+   "menit": 352,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 321,
+   "menit": 336,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 220,
+   "menit": 235,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/hasil/cv-pengalaman-pondok/cv-pengalaman-pondok.pptx"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 19301,
+   "menit": 19316,
    "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 237,
+   "menit": 252,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/.cache.json"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 246,
+   "menit": 261,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 9887,
+   "menit": 9902,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
