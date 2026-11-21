@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-18T18:10:11+00:00",
+ "diperbarui": "2026-11-21T10:51:58+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -7,59 +7,88 @@
    "file": "laptop nyala"
   },
   "claude": {
-   "status": "istirahat",
-   "menit": 107,
-   "file": "02 Media Sosial/Santri Sekamar/HANDOFF.md"
+   "status": "kerja",
+   "menit": 21,
+   "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 1816,
+   "menit": 5697,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
    "status": "kerja",
-   "menit": 21,
-   "file": "01 Website/rifkyaritama-seo/riset-ide-konten.md"
+   "menit": 29,
+   "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
-   "status": "kerja",
-   "menit": 22,
-   "file": "01 Website/rifkyaritama-seo/drafts/personal-branding-santri.json"
+   "status": "istirahat",
+   "menit": 552,
+   "file": "01 Website/rifkyaritama-seo/drafts/jasa-content-writer-thumbnail.kredit.json"
   },
   "bima": {
    "status": "kerja",
-   "menit": 21,
-   "file": "01 Website/rifkyaritama-seo/log-automasi.md"
+   "menit": 29,
+   "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "dimas": {
-   "status": "istirahat",
-   "menit": 3688,
-   "file": "01 Website/santrigo-app/server/seoRender.ts"
+   "status": "kerja",
+   "menit": 14,
+   "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 908,
-   "file": "01 Website/santrigo-seo/thumbnails/berita-alkhoirot-olimpiade-sains/thumbnail.jpg"
+   "menit": 607,
+   "file": "01 Website/santrigo-seo/thumbnails/berita-assalaam-rusia/thumbnail.jpg"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 15112,
+   "menit": 18993,
    "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
   },
   "fajar": {
    "status": "kerja",
-   "menit": 4,
-   "file": "02 Media Sosial/Santri Sekamar/episodes/EP01-habis-mondok-mau-jadi-apa/scenes.json"
+   "menit": 1,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/motion/EP02-ucup-koperasi_draft_engine.mp4"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 80,
-   "file": "02 Media Sosial/Santri Sekamar/test_vo_fikri.wav"
+   "menit": 3830,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L08.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 5697,
+   "menit": 9579,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
+ },
+ "todo": {
+  "tanggal": "2026-11-19",
+  "item": [
+   {
+    "id": "seno",
+    "klien": "Santrigo",
+    "teks": "Riset keyword artikel minggu ini",
+    "selesai": false
+   },
+   {
+    "id": "laras",
+    "klien": "Santrigo",
+    "teks": "Draft artikel dari antrean teratas",
+    "selesai": false
+   },
+   {
+    "id": "bima",
+    "klien": "Blog Rifky",
+    "teks": "Jadwalkan artikel terbit 17:00",
+    "selesai": false
+   },
+   {
+    "id": "fajar",
+    "klien": "Santri Sekamar",
+    "teks": "Naskah EP02",
+    "selesai": false
+   }
+  ]
  }
 }

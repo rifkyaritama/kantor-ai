@@ -6,7 +6,7 @@
 <title>Kantor AI Rifky</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
 <style>
 /* Arah: kantor kecil yang hangat, dinding krem + lantai kayu, label nama gelap ala game simulasi.
    Dial: ENERGY 2 / RHYTHM 1 / MOTION 2. Gerak = informasi: jalan saat status berubah, mondar-mandir saat istirahat. */
@@ -44,6 +44,7 @@ main{max-width:1100px;margin:0 auto;padding:0 16px 24px;display:grid;gap:12px}
 .info{margin:0;padding:12px;border-radius:8px;border:2px solid var(--tinta);background:var(--kartu)}
 .info.galat{border-color:#9b2c2c;background:#fdeceb;color:#7a1f1f}
 [hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* satu lantai: meja di atas, pantry di bawah */
 .lantai{
@@ -101,6 +102,26 @@ dialog::backdrop{background:rgba(42,38,34,.45)}
 .dlg dd{margin:0;overflow-wrap:anywhere}
 .dlg code{font-size:.85rem;background:#efe7d8;padding:1px 5px;border-radius:4px}
 
+/* papan tulis: tulisan spidol (Patrick Hand) biar kebaca sebagai papan, bukan dashboard */
+.papan-tulis{background:#fbfbf8;border:6px solid #b9bec4;outline:2px solid var(--tinta);border-radius:6px;padding:12px 16px 14px;position:relative;margin-bottom:10px}
+.papan-tulis::after{content:"";position:absolute;left:24px;bottom:-12px;width:70px;height:6px;background:#9aa0a6;border:1.5px solid var(--tinta);border-radius:2px}
+.papan-kepala{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-bottom:6px}
+.papan-kepala h2{font-family:"Patrick Hand",cursive;font-size:1.6rem;margin:0;color:#1d3f8a;line-height:1.1}
+.papan-kepala .prog{font-family:"Patrick Hand",cursive;font-size:1.15rem;color:#8a2a2a}
+.todo{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:4px 24px}
+.todo li{display:flex;gap:8px;align-items:flex-start;font-family:"Patrick Hand",cursive;font-size:1.12rem;color:#1d3f8a;line-height:1.3;padding:3px 0}
+.todo li.beres .teks{text-decoration:line-through;color:#5b6b8f}
+.cek{flex:none;width:18px;height:18px;margin-top:3px}
+.todo .isi{min-width:0}
+.todo .meta{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-family:system-ui,sans-serif;font-size:.75rem}
+.pemilik{font:inherit;font-weight:600;color:var(--tinta);background:transparent;border:0;padding:4px 2px;min-height:28px;display:inline-flex;align-items:center;gap:4px;text-decoration:underline;text-underline-offset:2px}
+.pemilik:hover{color:#1d3f8a}
+.pemilik i{width:9px;height:9px;border-radius:50%;border:1px solid var(--tinta);display:inline-block}
+.klien{color:#5a5048}
+.papan-kosong{font-family:"Patrick Hand",cursive;font-size:1.15rem;color:#5b6b8f;margin:4px 0 0}
+.papan small{display:block;color:#6b5f55;font-size:.66rem}
+.dlg ul{margin:0;padding-left:18px}
+
 footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color:#5a5048}
 </style>
 </head>
@@ -128,6 +149,15 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color
     <p style="margin:0 0 8px">Status gagal dimuat: <span id="galat-pesan"></span></p>
     <button class="tombol" id="btn-ulang" type="button">Coba muat lagi</button>
   </div>
+
+  <section class="papan-tulis" aria-labelledby="h-todo">
+    <div class="papan-kepala">
+      <h2 id="h-todo">To do hari ini</h2>
+      <span class="prog" id="todo-prog"></span>
+    </div>
+    <ul class="todo" id="todo"></ul>
+    <p class="papan-kosong" id="todo-kosong" hidden>Papan masih kosong. Tulis tugas di todo.md.</p>
+  </section>
 
   <section class="lantai" id="lantai" aria-label="Lantai kantor">
     <div class="zona-pantry" id="pantry">
@@ -157,6 +187,8 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color
     <dl>
       <dt>Jabatan</dt><dd id="dlg-jab"></dd>
       <dt>Tugas</dt><dd id="dlg-tugas"></dd>
+      <dt>Klien</dt><dd id="dlg-klien"></dd>
+      <dt>To do</dt><dd id="dlg-todo"></dd>
       <dt>Status</dt><dd id="dlg-st"></dd>
       <dt>Terakhir aktif</dt><dd id="dlg-akhir"></dd>
       <dt>Dibaca dari</dt><dd id="dlg-sumber"></dd>
@@ -167,18 +199,18 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color
 
 <script>
 const TIM = [
-  {id:"rifky", nama:"Bos Rifky", jabatan:"CEO / Pemilik", tugas:"Kasih arahan dan approve hasil kerja", sumber:"-", baju:"#3a3a3a", rambut:"#1c1a18", topi:true, bos:true},
-  {id:"claude", nama:"Claude", jabatan:"COO", tugas:"Bagi tugas ke tim, bikin handoff", sumber:".claude/, HANDOFF.md", baju:"#c4643c", rambut:"#5b3a24"},
-  {id:"gemi", nama:"Gemi", jabatan:"Wakil COO", tugas:"Eksekusi tugas dari Claude", sumber:"GEMINI.md", baju:"#3e6bb0", rambut:"#2a2622", via:"Antigravity (Gemini)"},
-  {id:"seno", nama:"Seno", jabatan:"SEO Specialist", tugas:"Riset keyword, susun antrean, cek indeks", sumber:"antrean-artikel.md, log-indeks.md", baju:"#4f7d5c", rambut:"#2a2622"},
-  {id:"laras", nama:"Laras", jabatan:"SEO Writer", tugas:"Nulis draft artikel blog", sumber:"drafts/", baju:"#9a4f6e", kerudung:true},
-  {id:"bima", nama:"Bima", jabatan:"Publisher", tugas:"Upload draft ke WordPress dan jadwalkan terbit", sumber:"log-automasi.md", baju:"#6a6f7a", rambut:"#2a2622"},
-  {id:"dimas", nama:"Dimas", jabatan:"Web Developer", tugas:"Ngembangin santrigo-app", sumber:"santrigo-app/src, server", baju:"#2f4f6f", rambut:"#2a2622"},
-  {id:"nadia", nama:"Nadia", jabatan:"Desainer Grafis", tugas:"Thumbnail blog dan visual IG", sumber:"thumbnails/, Visual IG Santrigo/hasil", baju:"#c9893a", kerudung:true},
-  {id:"putri", nama:"Putri", jabatan:"Social Media Officer", tugas:"IG Story Santrigo, posting Threads", sumber:"IG Story/FIX", baju:"#5c8a8a", kerudung:true},
-  {id:"fajar", nama:"Fajar", jabatan:"Scriptwriter", tugas:"Naskah episode Santri Sekamar", sumber:"Santri Sekamar/episodes", baju:"#7a5a3a", rambut:"#2a2622"},
-  {id:"bayu", nama:"Bayu", jabatan:"Voice Over", tugas:"Generate VO tiap karakter", sumber:"file .wav di Santri Sekamar", baju:"#5a4f8a", rambut:"#2a2622", via:"Gemini TTS"},
-  {id:"arga", nama:"Arga", jabatan:"Business Strategist", tugas:"Strategi bisnis dan target 100 user berbayar", sumber:"03 Bisnis & Strategi/", baju:"#8a3a3a", rambut:"#2a2622"}
+  {id:"rifky", klien:"Semua klien", nama:"Bos Rifky", jabatan:"CEO / Pemilik", tugas:"Kasih arahan dan approve hasil kerja", sumber:"-", baju:"#3a3a3a", rambut:"#1c1a18", topi:true, bos:true},
+  {id:"claude", klien:"Semua klien", nama:"Claude", jabatan:"COO", tugas:"Bagi tugas ke tim, bikin handoff", sumber:".claude/, HANDOFF.md", baju:"#c4643c", rambut:"#5b3a24"},
+  {id:"gemi", klien:"Santrigo", nama:"Gemi", jabatan:"Wakil COO", tugas:"Eksekusi tugas dari Claude", sumber:"GEMINI.md", baju:"#3e6bb0", rambut:"#2a2622", via:"Antigravity (Gemini)"},
+  {id:"seno", klien:"Santrigo, Blog Rifky", nama:"Seno", jabatan:"SEO Specialist", tugas:"Riset keyword, susun antrean, cek indeks", sumber:"antrean-artikel.md, log-indeks.md", baju:"#4f7d5c", rambut:"#2a2622"},
+  {id:"laras", klien:"Santrigo, Blog Rifky", nama:"Laras", jabatan:"SEO Writer", tugas:"Nulis draft artikel blog", sumber:"drafts/", baju:"#9a4f6e", kerudung:true},
+  {id:"bima", klien:"Santrigo, Blog Rifky", nama:"Bima", jabatan:"Publisher", tugas:"Upload draft ke WordPress dan jadwalkan terbit", sumber:"log-automasi.md", baju:"#6a6f7a", rambut:"#2a2622"},
+  {id:"dimas", klien:"Santrigo", nama:"Dimas", jabatan:"Web Developer", tugas:"Ngembangin santrigo-app", sumber:"santrigo-app/src, server", baju:"#2f4f6f", rambut:"#2a2622"},
+  {id:"nadia", klien:"Santrigo", nama:"Nadia", jabatan:"Desainer Grafis", tugas:"Thumbnail blog dan visual IG", sumber:"thumbnails/, Visual IG Santrigo/hasil", baju:"#c9893a", kerudung:true},
+  {id:"putri", klien:"Santrigo", nama:"Putri", jabatan:"Social Media Officer", tugas:"IG Story Santrigo, posting Threads", sumber:"IG Story/FIX", baju:"#5c8a8a", kerudung:true},
+  {id:"fajar", klien:"Santri Sekamar", nama:"Fajar", jabatan:"Scriptwriter", tugas:"Naskah episode Santri Sekamar", sumber:"Santri Sekamar/episodes", baju:"#7a5a3a", rambut:"#2a2622"},
+  {id:"bayu", klien:"Santri Sekamar", nama:"Bayu", jabatan:"Voice Over", tugas:"Generate VO tiap karakter", sumber:"file .wav di Santri Sekamar", baju:"#5a4f8a", rambut:"#2a2622", via:"Gemini TTS"},
+  {id:"arga", klien:"Santrigo", nama:"Arga", jabatan:"Business Strategist", tugas:"Strategi bisnis dan target 100 user berbayar", sumber:"03 Bisnis & Strategi/", baju:"#8a3a3a", rambut:"#2a2622"}
 ];
 
 // Data contoh. Versi live diisi dari status.json hasil script di laptop.
@@ -189,9 +221,19 @@ let STATUS = {
   fajar:{status:"kerja", menit:40}, bayu:{status:"istirahat", menit:75}, arga:{status:"istirahat", menit:2000}
 };
 
+// To do contoh. Versi live diambil dari todo.md lewat status.json.
+let TODO = {tanggal:"", item:[
+  {id:"seno", klien:"Santrigo", teks:"Riset 5 keyword karier santri", selesai:true},
+  {id:"laras", klien:"Santrigo", teks:"Draft artikel: CV pertama lulusan pondok", selesai:false},
+  {id:"bima", klien:"Blog Rifky", teks:"Jadwalkan artikel jam 17:00", selesai:false},
+  {id:"nadia", klien:"Santrigo", teks:"Thumbnail artikel hari ini", selesai:false},
+  {id:"fajar", klien:"Santri Sekamar", teks:"Naskah EP02", selesai:false},
+  {id:"bayu", klien:"Santri Sekamar", teks:"VO EP01 revisi suara Fikri", selesai:true}
+]};
+
 const KULIT = "#e8b98e";
 const KECEPATAN = 110; // piksel per detik
-const SLOT_H = 150;
+const SLOT_H = 175;
 const lantai = document.getElementById("lantai");
 const pantry = document.getElementById("pantry");
 const gerakMati = matchMedia("(prefers-reduced-motion: reduce)");
@@ -335,7 +377,7 @@ function bangun(){
   TIM.forEach(p => {
     const m = document.createElement("div");
     m.className = "meja";
-    m.innerHTML = svgMeja(p) + `<span class="papan">${p.jabatan}</span>`;
+    m.innerHTML = svgMeja(p) + `<span class="papan">${p.jabatan}<small>${p.klien}</small></span>`;
     lantai.appendChild(m);
     MEJA[p.id] = m;
 
@@ -383,6 +425,41 @@ addEventListener("resize", () => {
   }, 150);
 });
 
+const CEK = `<svg class="cek" viewBox="0 0 18 18" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="15" rx="2" fill="none" stroke="#1d3f8a" stroke-width="2"/><path class="v" d="M4 9.5 l3.5 3.5 l7 -9" fill="none" stroke="#2e7d4f" stroke-width="2.6" stroke-linecap="round"/></svg>`;
+function renderPapan(){
+  const ul = document.getElementById("todo");
+  ul.innerHTML = "";
+  const item = (TODO && TODO.item) || [];
+  const beres = item.filter(t => t.selesai).length;
+  document.getElementById("todo-kosong").hidden = item.length > 0;
+  let hari = "";
+  if (TODO.tanggal){
+    const d = new Date(TODO.tanggal + "T00:00:00+07:00");
+    if (!isNaN(d)) hari = new Intl.DateTimeFormat("id-ID",{weekday:"long", day:"numeric", month:"short", timeZone:"Asia/Jakarta"}).format(d);
+  }
+  document.getElementById("todo-prog").textContent = [hari, item.length ? `${beres}/${item.length} beres` : ""].filter(Boolean).join(", ");
+  item.forEach(t => {
+    const p = TIM.find(x => x.id === t.id);
+    const li = document.createElement("li");
+    if (t.selesai) li.className = "beres";
+    li.innerHTML = CEK.replace('class="v"', t.selesai ? 'class="v"' : 'class="v" visibility="hidden"') + `<div class="isi"><span class="teks"></span><span class="sr-only"></span><div class="meta"></div></div>`;
+    li.querySelector(".teks").textContent = t.teks;
+    li.querySelector(".sr-only").textContent = t.selesai ? " (beres)" : " (belum)";
+    const meta = li.querySelector(".meta");
+    if (p){
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "pemilik";
+      b.innerHTML = `<i style="background:${p.baju}"></i>`;
+      b.append(p.nama);
+      b.setAttribute("aria-label", `Lihat detail ${p.nama}`);
+      b.addEventListener("click", () => buka(p));
+      meta.appendChild(b);
+    }
+    if (t.klien){ const k = document.createElement("span"); k.className = "klien"; k.textContent = t.klien; meta.appendChild(k); }
+    ul.appendChild(li);
+  });
+}
+
 function teksWaktu(m){
   if (m < 1) return "barusan";
   if (m < 60) return `${m} menit lalu`;
@@ -400,6 +477,16 @@ function buka(p){
   const s = document.getElementById("dlg-sumber");
   s.innerHTML = "";
   const c = document.createElement("code"); c.textContent = st.file || p.sumber; s.appendChild(c);
+  document.getElementById("dlg-klien").textContent = p.klien;
+  const td = document.getElementById("dlg-todo");
+  td.innerHTML = "";
+  const punya = ((TODO && TODO.item) || []).filter(t => t.id === p.id);
+  if (!punya.length) td.textContent = "Nggak ada tugas di papan hari ini";
+  else {
+    const ul = document.createElement("ul");
+    punya.forEach(t => { const li = document.createElement("li"); li.textContent = (t.selesai ? "Beres: " : "") + t.teks + (t.klien ? ` (${t.klien})` : ""); ul.appendChild(li); });
+    td.appendChild(ul);
+  }
   document.getElementById("dlg").showModal();
 }
 
@@ -437,6 +524,7 @@ async function muatStatus(manual){
     const data = await r.json();
     if (!data.status) throw new Error("format status.json nggak dikenal");
     STATUS = data.status;
+    if (data.todo) { TODO = data.todo; renderPapan(); }
     galat.hidden = true;
     const label = document.getElementById("label-sumber");
     const umur = data.diperbarui ? (Date.now() - new Date(data.diperbarui)) / 60000 : 0;
@@ -460,6 +548,7 @@ document.getElementById("btn-ulang").addEventListener("click", () => muatStatus(
 
 jam(); setInterval(jam, 30000);
 bangun();
+renderPapan();
 muatStatus();
 setInterval(() => { if (!document.hidden) muatStatus(); }, 5 * 60000);
 </script>
