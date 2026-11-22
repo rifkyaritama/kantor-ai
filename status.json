@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-22T09:02:40+00:00",
+ "diperbarui": "2026-11-22T09:17:47+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 6,
-   "file": "ORKESTRA.md"
+   "menit": 1,
+   "file": "02 Media Sosial/Santri Sekamar/HANDOFF.md"
   },
   "gemi": {
-   "status": "istirahat",
-   "menit": 857,
+   "status": "kerja",
+   "menit": 6,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 132,
+   "menit": 147,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 132,
+   "menit": 147,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 1360,
+   "menit": 1375,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 1344,
+   "menit": 1359,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
-   "status": "istirahat",
-   "menit": 132,
-   "file": "01 Website/santrigo-seo/thumbnails/ide-usaha/thumbnail.jpg"
+   "status": "kerja",
+   "menit": -1,
+   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/hasil/cv-pengalaman-pondok/preview/slide-2.png"
   },
   "putri": {
    "status": "kerja",
-   "menit": 11,
+   "menit": 26,
    "file": "05 Apps/repliz/README.md"
   },
   "fajar": {
-   "status": "istirahat",
-   "menit": 978,
-   "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
+   "status": "kerja",
+   "menit": 1,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/timing.json"
   },
   "bayu": {
-   "status": "istirahat",
-   "menit": 995,
-   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L13.wav"
+   "status": "kerja",
+   "menit": 1,
+   "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L19.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 10910,
+   "menit": 10925,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
