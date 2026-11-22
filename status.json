@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-22T12:01:10+00:00",
+ "diperbarui": "2026-11-22T12:59:56+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 107,
+   "menit": 166,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 160,
+   "menit": 219,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 106,
+   "menit": 165,
    "file": "01 Website/rifkyaritama-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 106,
+   "menit": 165,
    "file": "01 Website/rifkyaritama-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 1538,
+   "menit": 1597,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 1523,
+   "menit": 1581,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 163,
+   "menit": 221,
    "file": "05 Apps/studio-desain/desain/cv-pengalaman-pondok/studio.json"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 152,
+   "menit": 211,
    "file": "02 Media Sosial/Santrigo/Draft Konten/2026-11-21-mantiq-berpikir-terstruktur-v2.md"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 165,
+   "menit": 223,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/timing.json"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 165,
+   "menit": 223,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L19.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 11088,
+   "menit": 11147,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
