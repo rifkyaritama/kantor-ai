@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-21T18:45:34+00:00",
+ "diperbarui": "2026-11-22T06:46:40+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -7,58 +7,58 @@
    "file": "laptop nyala"
   },
   "claude": {
-   "status": "kerja",
-   "menit": 7,
+   "status": "istirahat",
+   "menit": 711,
    "file": "STATUS.md"
   },
   "gemi": {
-   "status": "kerja",
-   "menit": 0,
+   "status": "istirahat",
+   "menit": 721,
    "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 503,
+   "menit": 1224,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 1026,
-   "file": "01 Website/rifkyaritama-seo/drafts/jasa-content-writer-thumbnail.kredit.json"
+   "menit": 1224,
+   "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 503,
-   "file": "01 Website/santrigo-seo/log-automasi.md"
+   "menit": 1224,
+   "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 487,
+   "menit": 1208,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 386,
-   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/hasil/cv-pengalaman-pondok/cv-pengalaman-pondok.pptx"
+   "menit": 713,
+   "file": "05 Apps/studio-desain/desain/ig-story-santrigo/studio.json"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 19467,
-   "file": "02 Media Sosial/Santrigo/IG Story/FIX/Catatan stiker.txt"
+   "menit": 714,
+   "file": "02 Media Sosial/Santrigo/Threads/README.md"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 121,
+   "menit": 842,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 138,
+   "menit": 859,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L13.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 10053,
+   "menit": 10774,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },

@@ -200,17 +200,17 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;font-size:.85rem;color
 <script>
 const TIM = [
   {id:"rifky", klien:"Semua klien", nama:"Bos Rifky", jabatan:"CEO / Pemilik", tugas:"Kasih arahan dan approve hasil kerja", sumber:"-", baju:"#3a3a3a", rambut:"#1c1a18", topi:true, bos:true},
-  {id:"claude", klien:"Semua klien", nama:"Claude", jabatan:"COO", tugas:"Bagi tugas ke tim, bikin handoff", sumber:".claude/, HANDOFF.md", baju:"#c4643c", rambut:"#5b3a24"},
-  {id:"gemi", klien:"Santrigo", nama:"Gemi", jabatan:"Wakil COO", tugas:"Eksekusi tugas dari Claude", sumber:"GEMINI.md", baju:"#3e6bb0", rambut:"#2a2622", via:"Antigravity (Gemini)"},
-  {id:"seno", klien:"Santrigo, Blog Rifky", nama:"Seno", jabatan:"SEO Specialist", tugas:"Riset keyword, susun antrean, cek indeks", sumber:"antrean-artikel.md, log-indeks.md", baju:"#4f7d5c", rambut:"#2a2622"},
-  {id:"laras", klien:"Santrigo, Blog Rifky", nama:"Laras", jabatan:"SEO Writer", tugas:"Nulis draft artikel blog", sumber:"drafts/", baju:"#9a4f6e", kerudung:true},
-  {id:"bima", klien:"Santrigo, Blog Rifky", nama:"Bima", jabatan:"Publisher", tugas:"Upload draft ke WordPress dan jadwalkan terbit", sumber:"log-automasi.md", baju:"#6a6f7a", rambut:"#2a2622"},
-  {id:"dimas", klien:"Santrigo", nama:"Dimas", jabatan:"Web Developer", tugas:"Ngembangin santrigo-app", sumber:"santrigo-app/src, server", baju:"#2f4f6f", rambut:"#2a2622"},
-  {id:"nadia", klien:"Santrigo", nama:"Nadia", jabatan:"Desainer Grafis", tugas:"Thumbnail blog dan visual IG", sumber:"thumbnails/, Visual IG Santrigo/hasil", baju:"#c9893a", kerudung:true},
-  {id:"putri", klien:"Santrigo", nama:"Putri", jabatan:"Social Media Officer", tugas:"IG Story Santrigo, posting Threads", sumber:"IG Story/FIX", baju:"#5c8a8a", kerudung:true},
-  {id:"fajar", klien:"Santri Sekamar", nama:"Fajar", jabatan:"Scriptwriter", tugas:"Naskah episode Santri Sekamar", sumber:"Santri Sekamar/episodes", baju:"#7a5a3a", rambut:"#2a2622"},
-  {id:"bayu", klien:"Santri Sekamar", nama:"Bayu", jabatan:"Voice Over", tugas:"Generate VO tiap karakter", sumber:"file .wav di Santri Sekamar", baju:"#5a4f8a", rambut:"#2a2622", via:"Gemini TTS"},
-  {id:"arga", klien:"Santrigo", nama:"Arga", jabatan:"Business Strategist", tugas:"Strategi bisnis dan target 100 user berbayar", sumber:"03 Bisnis & Strategi/", baju:"#8a3a3a", rambut:"#2a2622"}
+  {id:"claude", klien:"Semua klien", nama:"Claude", jabatan:"COO / Dirigen", tugas:"Pecah permintaan Rifky jadi tugas, oper ke kursi yang pas, nulis handoff, jaga STATUS.md, bangun tools", sumber:".claude/, STATUS.md, ORKESTRA.md, HANDOFF.md", baju:"#c4643c", rambut:"#5b3a24"},
+  {id:"gemi", klien:"Santrigo", nama:"Gemi", jabatan:"Kepala Studio Produksi", tugas:"Eksekusi brief & handoff: desain carousel (engine), Studio Desain, motion Santri Sekamar", sumber:"GEMINI.md, Visual IG Santrigo/log.md", baju:"#3e6bb0", rambut:"#2a2622", via:"Antigravity (Gemini)"},
+  {id:"seno", klien:"Santrigo, Blog Rifky", nama:"Seno", jabatan:"SEO Specialist", tugas:"Isi & susun antrean artikel, riset keyword, cek indeks GSC (manual lewat Claude)", sumber:"antrean-artikel.md, log-indeks.md", baju:"#4f7d5c", rambut:"#2a2622"},
+  {id:"laras", klien:"Santrigo, Blog Rifky", nama:"Laras", jabatan:"SEO Writer", tugas:"Tiap pagi nulis 1 artikel per blog + 1 berita pesantren, jadwalin terbit", sumber:"drafts/, log-automasi.md", via:"Tugas terjadwal Claude", baju:"#9a4f6e", kerudung:true},
+  {id:"bima", klien:"Santrigo, Blog Rifky", nama:"Bima", jabatan:"Publisher & QC Terbit", tugas:"Sore cek artikel bener-bener terbit + tayang, kirim email pengingat indeks", sumber:"log-automasi.md, log-indeks.md", via:"Tugas terjadwal Claude", baju:"#6a6f7a", rambut:"#2a2622"},
+  {id:"dimas", klien:"Santrigo", nama:"Dimas", jabatan:"Web Developer", tugas:"Ngembangin santrigo-app (kuis, bayar, AI hasil kuis), push branch deploy", sumber:"santrigo-app/src, server", baju:"#2f4f6f", rambut:"#2a2622"},
+  {id:"nadia", klien:"Santrigo", nama:"Nadia", jabatan:"Desainer Grafis", tugas:"Visual IG Santrigo, thumbnail blog, desain statis Studio Desain", sumber:"Visual IG Santrigo/hasil, studio-desain/desain, thumbnails/", via:"Antigravity + tugas artikel", baju:"#c9893a", kerudung:true},
+  {id:"putri", klien:"Santrigo", nama:"Putri", jabatan:"Content Strategist & Social Media", tugas:"IG: content plan, draf carousel/reels/story + caption, brief buat studio. Threads: 5 post/hari via Buffer", sumber:"Content Plan/, Draft Konten/, brief/, Threads/README.md", via:"Agent santrigo-content + chat Claude (Buffer)", baju:"#5c8a8a", kerudung:true},
+  {id:"fajar", klien:"Santri Sekamar", nama:"Fajar", jabatan:"Scriptwriter", tugas:"Naskah + vo-script Santri Sekamar, naskah Video Hijaiya", sumber:"Santri Sekamar/episodes", baju:"#7a5a3a", rambut:"#2a2622"},
+  {id:"bayu", klien:"Santri Sekamar", nama:"Bayu", jabatan:"Voice Over", tugas:"Generate VO per baris + gate cek_vo/cek_bocor, stop kalau jatah habis", sumber:"Santri Sekamar/episodes/*/vo, Studio VO", baju:"#5a4f8a", rambut:"#2a2622", via:"Antigravity (Gemini TTS)"},
+  {id:"arga", klien:"Santrigo", nama:"Arga", jabatan:"Business Strategist", tugas:"Rencana GTM 90 hari, pricing, tracking, deck, target 100 paid user", sumber:"03 Bisnis & Strategi/", baju:"#8a3a3a", rambut:"#2a2622"}
 ];
 
 // Data contoh. Versi live diisi dari status.json hasil script di laptop.
