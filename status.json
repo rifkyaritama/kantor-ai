@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-22T09:17:47+00:00",
+ "diperbarui": "2026-11-22T09:32:55+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 1,
-   "file": "02 Media Sosial/Santri Sekamar/HANDOFF.md"
+   "menit": 3,
+   "file": "STATUS.md"
   },
   "gemi": {
    "status": "kerja",
-   "menit": 6,
-   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/GEMINI.md"
+   "menit": 12,
+   "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 147,
+   "menit": 162,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 147,
+   "menit": 162,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 1375,
+   "menit": 1390,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 1359,
+   "menit": 1374,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
    "status": "kerja",
-   "menit": -1,
-   "file": "02 Media Sosial/Santrigo/Visual IG Santrigo/hasil/cv-pengalaman-pondok/preview/slide-2.png"
+   "menit": 14,
+   "file": "05 Apps/studio-desain/desain/cv-pengalaman-pondok/studio.json"
   },
   "putri": {
    "status": "kerja",
-   "menit": 26,
-   "file": "05 Apps/repliz/README.md"
+   "menit": 4,
+   "file": "02 Media Sosial/Santrigo/Draft Konten/2026-11-21-mantiq-berpikir-terstruktur-v2.md"
   },
   "fajar": {
    "status": "kerja",
-   "menit": 1,
+   "menit": 16,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/timing.json"
   },
   "bayu": {
    "status": "kerja",
-   "menit": 1,
+   "menit": 16,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo/L19.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 10925,
+   "menit": 10940,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
