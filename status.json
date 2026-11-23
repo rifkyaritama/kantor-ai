@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-23T01:30:36+00:00",
+ "diperbarui": "2026-11-23T01:46:12+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 507,
+   "menit": 523,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 970,
+   "menit": 985,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
-   "status": "istirahat",
-   "menit": 916,
-   "file": "01 Website/rifkyaritama-seo/antrean-artikel.md"
+   "status": "kerja",
+   "menit": 12,
+   "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
-   "status": "istirahat",
-   "menit": 916,
-   "file": "01 Website/rifkyaritama-seo/log-automasi.md"
+   "status": "kerja",
+   "menit": 12,
+   "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 2348,
+   "menit": 2363,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 2332,
+   "menit": 2348,
    "file": "01 Website/santrigo-app/server/wpContent.ts"
   },
   "nadia": {
-   "status": "istirahat",
-   "menit": 1120,
-   "file": "01 Website/santrigo-seo/thumbnails/ide-usaha/thumbnail.jpg"
+   "status": "kerja",
+   "menit": 12,
+   "file": "01 Website/santrigo-seo/thumbnails/barang-yang-harus-dibawa-ke-pondok/post.json"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 686,
+   "menit": 701,
    "file": "02 Media Sosial/Santrigo/Content Plan/2026-11-21-plan-23-29nov.md"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 507,
+   "menit": 523,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 662,
+   "menit": 677,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 11898,
+   "menit": 11913,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
