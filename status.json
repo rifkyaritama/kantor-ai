@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-25T17:29:15+00:00",
+ "diperbarui": "2026-11-25T17:44:20+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "kerja",
-   "menit": 17,
+   "menit": 10,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 4808,
+   "menit": 4824,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 426,
+   "menit": 441,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 426,
+   "menit": 441,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 426,
+   "menit": 441,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "kerja",
-   "menit": 0,
-   "file": "01 Website/santrigo-app/server/billingRoutes.ts"
+   "menit": 12,
+   "file": "01 Website/santrigo-app/src/pages/AdminDashboardPage.tsx"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 891,
+   "menit": 906,
    "file": "01 Website/santrigo-seo/thumbnails/validasi-ide-bisnis-santri/post.json"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 895,
+   "menit": 910,
    "file": "02 Media Sosial/Santrigo/Threads/Nimbrung/sudah-disetor.txt"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 4346,
+   "menit": 4361,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 4500,
+   "menit": 4515,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 15736,
+   "menit": 15751,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
