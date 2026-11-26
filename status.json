@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-25T21:11:51+00:00",
+ "diperbarui": "2026-11-26T01:17:12+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 157,
+   "menit": 402,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 5031,
+   "menit": 5276,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 649,
+   "menit": 894,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 649,
+   "menit": 894,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 649,
+   "menit": 894,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 183,
+   "menit": 429,
    "file": "01 Website/santrigo-app/src/pages/ArticlesPage.tsx"
   },
   "nadia": {
-   "status": "istirahat",
-   "menit": 1113,
-   "file": "01 Website/santrigo-seo/thumbnails/validasi-ide-bisnis-santri/post.json"
+   "status": "kerja",
+   "menit": 32,
+   "file": "01 Website/santrigo-seo/thumbnails/berita-al-hamidiyah-beasiswa/isi.jpg"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 1117,
+   "menit": 1363,
    "file": "02 Media Sosial/Santrigo/Threads/Nimbrung/sudah-disetor.txt"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 4569,
+   "menit": 4814,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 4723,
+   "menit": 4968,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 15959,
+   "menit": 16204,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
