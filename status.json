@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-26T06:57:51+00:00",
+ "diperbarui": "2026-11-26T07:12:56+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 743,
+   "menit": 758,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 5617,
+   "menit": 5632,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 291,
+   "menit": 306,
    "file": "01 Website/rifkyaritama-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 291,
+   "menit": 306,
    "file": "01 Website/rifkyaritama-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 1235,
+   "menit": 1250,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 769,
+   "menit": 784,
    "file": "01 Website/santrigo-app/src/pages/ArticlesPage.tsx"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 294,
+   "menit": 309,
    "file": "01 Website/santrigo-seo/thumbnails/kultum-isra-miraj-singkat/thumbnail.jpg"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 340,
+   "menit": 355,
    "file": "02 Media Sosial/Santrigo/Threads/Nimbrung/2026-11-26.md"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 5155,
+   "menit": 5170,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 5309,
+   "menit": 5324,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 16545,
+   "menit": 16560,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
