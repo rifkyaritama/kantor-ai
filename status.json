@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-27T01:27:38+00:00",
+ "diperbarui": "2026-11-27T01:42:52+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 1853,
+   "menit": 1868,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 6727,
+   "menit": 6742,
    "file": "02 Media Sosial/Santri Sekamar/motion-engine/out/EP02-ucup-koperasi.mp4"
   },
   "seno": {
-   "status": "istirahat",
-   "menit": 905,
+   "status": "kerja",
+   "menit": 5,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
-   "status": "istirahat",
-   "menit": 905,
+   "status": "kerja",
+   "menit": 5,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 905,
+   "menit": 920,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 1879,
+   "menit": 1894,
    "file": "01 Website/santrigo-app/src/pages/ArticlesPage.tsx"
   },
   "nadia": {
-   "status": "istirahat",
-   "menit": 1404,
-   "file": "01 Website/santrigo-seo/thumbnails/kultum-isra-miraj-singkat/thumbnail.jpg"
+   "status": "kerja",
+   "menit": 6,
+   "file": "01 Website/santrigo-seo/thumbnails/ijazah-pondok-pesantren-setara-sma/thumbnail.jpg"
   },
   "putri": {
-   "status": "istirahat",
-   "menit": 1449,
-   "file": "02 Media Sosial/Santrigo/Threads/Nimbrung/2026-11-26.md"
+   "status": "kerja",
+   "menit": 14,
+   "file": "02 Media Sosial/Santrigo/Threads/Nimbrung/sudah-disetor.txt"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 6265,
+   "menit": 6280,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 6419,
+   "menit": 6434,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 17655,
+   "menit": 17670,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
