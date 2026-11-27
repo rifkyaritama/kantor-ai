@@ -1,5 +1,5 @@
 {
- "diperbarui": "2026-11-27T06:26:40+00:00",
+ "diperbarui": "2026-11-27T06:41:44+00:00",
  "status": {
   "rifky": {
    "status": "kerja",
@@ -8,57 +8,57 @@
   },
   "claude": {
    "status": "istirahat",
-   "menit": 96,
+   "menit": 111,
    "file": "STATUS.md"
   },
   "gemi": {
    "status": "istirahat",
-   "menit": 96,
+   "menit": 111,
    "file": "00 SOP Antigravity/README.md"
   },
   "seno": {
    "status": "istirahat",
-   "menit": 289,
+   "menit": 304,
    "file": "01 Website/santrigo-seo/antrean-artikel.md"
   },
   "laras": {
    "status": "istirahat",
-   "menit": 289,
+   "menit": 304,
    "file": "01 Website/santrigo-seo/log-automasi.md"
   },
   "bima": {
    "status": "istirahat",
-   "menit": 1204,
+   "menit": 1219,
    "file": "01 Website/santrigo-seo/log-indeks.md"
   },
   "dimas": {
    "status": "istirahat",
-   "menit": 2178,
+   "menit": 2193,
    "file": "01 Website/santrigo-app/src/pages/ArticlesPage.tsx"
   },
   "nadia": {
    "status": "istirahat",
-   "menit": 290,
+   "menit": 305,
    "file": "01 Website/santrigo-seo/thumbnails/ijazah-pondok-pesantren-setara-sma/thumbnail.jpg"
   },
   "putri": {
    "status": "istirahat",
-   "menit": 244,
+   "menit": 259,
    "file": "05 Apps/repliz/README.md"
   },
   "fajar": {
    "status": "istirahat",
-   "menit": 6564,
+   "menit": 6579,
    "file": "02 Media Sosial/Santri Sekamar/AGENTS.md"
   },
   "bayu": {
    "status": "istirahat",
-   "menit": 6718,
+   "menit": 6733,
    "file": "02 Media Sosial/Santri Sekamar/episodes/EP02-ucup-koperasi/vo-gabungan.wav"
   },
   "arga": {
    "status": "istirahat",
-   "menit": 17954,
+   "menit": 17969,
    "file": "03 Bisnis & Strategi/Aset buat deck/IMG_8117.jpg"
   }
  },
